@@ -6,6 +6,7 @@ const navItems = [
   { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -27,20 +28,20 @@ export const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/95 backdrop-blur-sm border-b border-border' : 'bg-transparent'
+        isScrolled ? 'bg-background/90 backdrop-blur-md shadow-soft' : 'bg-transparent'
       }`}
     >
       <div className="section-container">
-        <nav className="flex items-center justify-between h-16">
-          <a href="#" className="font-serif text-lg text-foreground">
-            AV
+        <nav className="flex items-center justify-between h-16 lg:h-20">
+          <a href="#" className="font-serif text-xl lg:text-2xl text-foreground">
+            Anusha<span className="text-primary">.</span>
           </a>
 
           {/* Desktop Navigation */}
           <ul className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <li key={item.label}>
-                <a href={item.href} className="nav-link text-xs uppercase tracking-wider">
+                <a href={item.href} className="nav-link">
                   {item.label}
                 </a>
               </li>
@@ -53,7 +54,7 @@ export const Header = () => {
             className="md:hidden p-2 text-foreground"
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </nav>
 
@@ -63,14 +64,14 @@ export const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-border"
+            className="md:hidden bg-background/95 backdrop-blur-md border-t border-border"
           >
             <ul className="py-4 space-y-2">
               {navItems.map((item) => (
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="block py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="block py-2 nav-link"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
