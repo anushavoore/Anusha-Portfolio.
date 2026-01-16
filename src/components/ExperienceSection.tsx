@@ -5,12 +5,12 @@ const experiences = [
   {
     title: 'Senior Full Stack Java Developer',
     company: 'Uber',
-    period: 'July 2024 – Present',
+    period: 'Jul 2024 – Present',
   },
   {
     title: 'Full Stack Java Developer',
     company: 'Polaris',
-    period: 'Oct 2021 – June 2024',
+    period: 'Oct 2021 – Jun 2024',
   },
   {
     title: 'Full Stack Developer',
@@ -20,12 +20,12 @@ const experiences = [
   {
     title: 'Full Stack Java Developer',
     company: 'Austin Bank',
-    period: 'June 2018 – Feb 2020',
+    period: 'Jun 2018 – Feb 2020',
   },
   {
     title: 'Java Developer',
     company: 'Chimera Technologies',
-    period: 'June 2016 – May 2018',
+    period: 'Jun 2016 – May 2018',
   }
 ];
 
@@ -34,7 +34,7 @@ export const ExperienceSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="experience" className="py-20 lg:py-28">
+    <section id="experience" className="py-20 lg:py-28 border-t border-border">
       <div className="section-container">
         <motion.div
           ref={ref}
@@ -42,7 +42,7 @@ export const ExperienceSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-12">
+          <h2 className="font-serif text-2xl lg:text-3xl text-foreground mb-8">
             Experience
           </h2>
 
@@ -50,22 +50,19 @@ export const ExperienceSection = () => {
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 10 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="group py-6 border-b border-border first:border-t"
+                className="py-5 border-b border-border first:border-t flex flex-col sm:flex-row sm:items-baseline justify-between gap-1"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <div>
-                    <h3 className="font-serif text-lg text-foreground">
-                      {exp.title}
-                    </h3>
-                    <p className="text-primary font-medium">{exp.company}</p>
-                  </div>
-                  <span className="text-sm text-muted-foreground">
-                    {exp.period}
-                  </span>
+                <div className="flex items-baseline gap-3">
+                  <span className="text-foreground">{exp.title}</span>
+                  <span className="text-muted-foreground">—</span>
+                  <span className="text-muted-foreground">{exp.company}</span>
                 </div>
+                <span className="text-sm text-muted-foreground">
+                  {exp.period}
+                </span>
               </motion.div>
             ))}
           </div>
